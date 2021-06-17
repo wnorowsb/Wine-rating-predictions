@@ -1,0 +1,96 @@
+Creating network "code-challenge-2020_default" with the default driver
+Creating code-challenge-2020_luigid_1         ... done
+Creating code-challenge-2020_dask-scheduler_1 ... done
+Creating code-challenge-2020_orchestrator_1   ... done
+Attaching to code-challenge-2020_orchestrator_1
+orchestrator_1    | DEBUG: Checking if EvaluateModel(no_remove_finished=False, in_csv=/usr/share/data/processed/test_ready.csv, in_model=/usr/share/data/output/model_pickle.pckl, out_dir=/usr/share/data/output/) is complete
+orchestrator_1    | DEBUG: Checking if TrainModel(no_remove_finished=False, in_csv=/usr/share/data/processed/train_ready.csv, filename=model_pickle, out_dir=/usr/share/data/output/) is complete
+orchestrator_1    | INFO: Informed scheduler that task   EvaluateModel__usr_share_data___usr_share_data__False_01afe42432   has status   PENDING
+orchestrator_1    | DEBUG: Checking if ExtractFeatures(no_remove_finished=False, in_train=/usr/share/data/processed/train_cleaned.csv, in_test=/usr/share/data/processed/test_cleaned.csv, out_dir=/usr/share/data/processed/) is complete
+orchestrator_1    | INFO: Informed scheduler that task   TrainModel_model_pickle__usr_share_data__False_c6a8fa7c46   has status   PENDING
+orchestrator_1    | DEBUG: Checking if CleanDataset(no_remove_finished=False, in_train=/usr/share/data/processed/train.csv, in_test=/usr/share/data/processed/test.csv, out_dir=/usr/share/data/processed/) is complete
+orchestrator_1    | INFO: Informed scheduler that task   ExtractFeatures__usr_share_data___usr_share_data__False_a605133110   has status   PENDING
+orchestrator_1    | DEBUG: Checking if MakeDatasets(no_remove_finished=False, in_csv=/usr/share/data/raw/wine_dataset.csv, out_dir=/usr/share/data/processed/) is complete
+orchestrator_1    | INFO: Informed scheduler that task   CleanDataset__usr_share_data___usr_share_data__False_e12f4195ee   has status   PENDING
+orchestrator_1    | DEBUG: Checking if DownloadData(no_remove_finished=False, fname=wine_dataset, out_dir=/usr/share/data/raw/, url=https://github.com/datarevenue-berlin/code-challenge-2019/releases/download/0.1.0/dataset_sampled.csv) is complete
+orchestrator_1    | INFO: Informed scheduler that task   MakeDatasets__usr_share_data__False__usr_share_data__bf12c422f2   has status   PENDING
+orchestrator_1    | INFO: Informed scheduler that task   DownloadData_wine_dataset_False__usr_share_data__79bc385f2e   has status   PENDING
+orchestrator_1    | INFO: Done scheduling tasks
+orchestrator_1    | INFO: Running Worker with 1 processes
+orchestrator_1    | DEBUG: Asking scheduler for work...
+orchestrator_1    | DEBUG: Pending tasks: 6
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) running   DownloadData(no_remove_finished=False, fname=wine_dataset, out_dir=/usr/share/data/raw/, url=https://github.com/datarevenue-berlin/code-challenge-2019/releases/download/0.1.0/dataset_sampled.csv)
+orchestrator_1    | INFO: INFO:download-data:Downloading dataset
+orchestrator_1    | INFO: INFO:download-data:Will write to /usr/share/data/raw/wine_dataset.csv
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) done      DownloadData(no_remove_finished=False, fname=wine_dataset, out_dir=/usr/share/data/raw/, url=https://github.com/datarevenue-berlin/code-challenge-2019/releases/download/0.1.0/dataset_sampled.csv)
+orchestrator_1    | DEBUG: 1 running tasks, waiting for next task to finish
+orchestrator_1    | INFO: Informed scheduler that task   DownloadData_wine_dataset_False__usr_share_data__79bc385f2e   has status   DONE
+orchestrator_1    | DEBUG: Asking scheduler for work...
+orchestrator_1    | DEBUG: Pending tasks: 5
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) running   MakeDatasets(no_remove_finished=False, in_csv=/usr/share/data/raw/wine_dataset.csv, out_dir=/usr/share/data/processed/)
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) done      MakeDatasets(no_remove_finished=False, in_csv=/usr/share/data/raw/wine_dataset.csv, out_dir=/usr/share/data/processed/)
+orchestrator_1    | DEBUG: 1 running tasks, waiting for next task to finish
+orchestrator_1    | INFO: Informed scheduler that task   MakeDatasets__usr_share_data__False__usr_share_data__bf12c422f2   has status   DONE
+orchestrator_1    | DEBUG: Asking scheduler for work...
+orchestrator_1    | DEBUG: Pending tasks: 4
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) running   CleanDataset(no_remove_finished=False, in_train=/usr/share/data/processed/train.csv, in_test=/usr/share/data/processed/test.csv, out_dir=/usr/share/data/processed/)
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) done      CleanDataset(no_remove_finished=False, in_train=/usr/share/data/processed/train.csv, in_test=/usr/share/data/processed/test.csv, out_dir=/usr/share/data/processed/)
+orchestrator_1    | DEBUG: 1 running tasks, waiting for next task to finish
+orchestrator_1    | INFO: Informed scheduler that task   CleanDataset__usr_share_data___usr_share_data__False_e12f4195ee   has status   DONE
+orchestrator_1    | DEBUG: Asking scheduler for work...
+orchestrator_1    | DEBUG: Pending tasks: 3
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) running   ExtractFeatures(no_remove_finished=False, in_train=/usr/share/data/processed/train_cleaned.csv, in_test=/usr/share/data/processed/test_cleaned.csv, out_dir=/usr/share/data/processed/)
+orchestrator_1    | INFO: INFO:extract-features:File read
+orchestrator_1    | INFO: INFO:extract-features:Year extracted
+orchestrator_1    | INFO: /usr/local/lib/python3.7/site-packages/category_encoders/utils.py:21: FutureWarning: is_categorical is deprecated and will be removed in a future version.  Use is_categorical_dtype instead
+orchestrator_1    | INFO: elif pd.api.types.is_categorical(cols):
+orchestrator_1    | INFO: INFO:extract-features:Categories encoded
+orchestrator_1    | INFO: INFO:extract-features:Words extracted
+orchestrator_1    | INFO: INFO:extract-features:Data saved
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) done      ExtractFeatures(no_remove_finished=False, in_train=/usr/share/data/processed/train_cleaned.csv, in_test=/usr/share/data/processed/test_cleaned.csv, out_dir=/usr/share/data/processed/)
+orchestrator_1    | DEBUG: 1 running tasks, waiting for next task to finish
+orchestrator_1    | INFO: Informed scheduler that task   ExtractFeatures__usr_share_data___usr_share_data__False_a605133110   has status   DONE
+orchestrator_1    | DEBUG: Asking scheduler for work...
+orchestrator_1    | DEBUG: Pending tasks: 2
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) running   TrainModel(no_remove_finished=False, in_csv=/usr/share/data/processed/train_ready.csv, filename=model_pickle, out_dir=/usr/share/data/output/)
+orchestrator_1    | INFO: INFO:train-model:Data read
+orchestrator_1    | INFO: INFO:train-model:Model learned
+orchestrator_1    | INFO: INFO:train-model:Model saved
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) done      TrainModel(no_remove_finished=False, in_csv=/usr/share/data/processed/train_ready.csv, filename=model_pickle, out_dir=/usr/share/data/output/)
+orchestrator_1    | DEBUG: 1 running tasks, waiting for next task to finish
+orchestrator_1    | INFO: Informed scheduler that task   TrainModel_model_pickle__usr_share_data__False_c6a8fa7c46   has status   DONE
+orchestrator_1    | DEBUG: Asking scheduler for work...
+orchestrator_1    | DEBUG: Pending tasks: 1
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) running   EvaluateModel(no_remove_finished=False, in_csv=/usr/share/data/processed/test_ready.csv, in_model=/usr/share/data/output/model_pickle.pckl, out_dir=/usr/share/data/output/)
+orchestrator_1    | INFO: INFO:evaluate-model:Data read
+orchestrator_1    | INFO: /usr/local/lib/python3.7/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+orchestrator_1    | INFO: warnings.warn(msg, FutureWarning)
+orchestrator_1    | INFO: /usr/local/lib/python3.7/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+orchestrator_1    | INFO: warnings.warn(msg, FutureWarning)
+orchestrator_1    | INFO: /usr/local/lib/python3.7/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+orchestrator_1    | INFO: warnings.warn(msg, FutureWarning)
+orchestrator_1    | INFO: INFO:evaluate-model:Evaluation saved
+orchestrator_1    | INFO: [pid 1] Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) done      EvaluateModel(no_remove_finished=False, in_csv=/usr/share/data/processed/test_ready.csv, in_model=/usr/share/data/output/model_pickle.pckl, out_dir=/usr/share/data/output/)
+orchestrator_1    | DEBUG: 1 running tasks, waiting for next task to finish
+orchestrator_1    | INFO: Informed scheduler that task   EvaluateModel__usr_share_data___usr_share_data__False_01afe42432   has status   DONE
+orchestrator_1    | DEBUG: Asking scheduler for work...
+orchestrator_1    | DEBUG: Done
+orchestrator_1    | DEBUG: There are no more tasks to run at this time
+orchestrator_1    | INFO: Worker Worker(salt=207019020, workers=1, host=b0e5e0a21f84, username=root, pid=1) was stopped. Shutting down Keep-Alive thread
+orchestrator_1    | INFO: 
+orchestrator_1    | ===== Luigi Execution Summary =====
+orchestrator_1    | 
+orchestrator_1    | Scheduled 6 tasks of which:
+orchestrator_1    | * 6 ran successfully:
+orchestrator_1    |     - 1 CleanDataset(no_remove_finished=False, in_train=/usr/share/data/processed/train.csv, in_test=/usr/share/data/processed/test.csv, out_dir=/usr/share/data/processed/)
+orchestrator_1    |     - 1 DownloadData(no_remove_finished=False, fname=wine_dataset, out_dir=/usr/share/data/raw/, url=https://github.com/datarevenue-berlin/code-challenge-2019/releases/download/0.1.0/dataset_sampled.csv)
+orchestrator_1    |     - 1 EvaluateModel(no_remove_finished=False, in_csv=/usr/share/data/processed/test_ready.csv, in_model=/usr/share/data/output/model_pickle.pckl, out_dir=/usr/share/data/output/)
+orchestrator_1    |     - 1 ExtractFeatures(no_remove_finished=False, in_train=/usr/share/data/processed/train_cleaned.csv, in_test=/usr/share/data/processed/test_cleaned.csv, out_dir=/usr/share/data/processed/)
+orchestrator_1    |     - 1 MakeDatasets(no_remove_finished=False, in_csv=/usr/share/data/raw/wine_dataset.csv, out_dir=/usr/share/data/processed/)
+orchestrator_1    |     ...
+orchestrator_1    | 
+orchestrator_1    | This progress looks :) because there were no failed tasks or missing dependencies
+orchestrator_1    | 
+orchestrator_1    | ===== Luigi Execution Summary =====
+orchestrator_1    | 
+code-challenge-2020_orchestrator_1 exited with code 0
